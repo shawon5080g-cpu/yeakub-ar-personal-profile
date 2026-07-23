@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yeakub Islam – Personal Page</title>
+    <!-- Font Awesome 6 (Free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+    <style>
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            background: radial-gradient(circle at 10% 20%, #0f0c29, #302b63, #24243e);
+            background-attachment: fixed;
+        }
+
+        /* --- GLASS CARD --- */
+        .card {
+            max-width: 540px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-radius: 48px;
+            padding: 32px 28px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.04);
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8);
+        }
+
+        /* --- PROFILE --- */
+        .profile {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .avatar {
+            width: 108px;
+            height: 108px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            margin: 0 auto 16px;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            display: block;
+        }
+
+        .profile h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .profile .title {
+            color: #b0b3d0;
+            font-size: 15px;
+            margin-top: 4px;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+
+        .divider {
+            width: 56px;
+            height: 3px;
+            background: linear-gradient(90deg, #f093fb, #f5576c);
+            margin: 14px auto 0;
+            border-radius: 6px;
+        }
+
+        /* --- SOCIAL BUTTONS --- */
+        .link-btn {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.07);
+            padding: 14px 20px;
+            border-radius: 60px;
+            margin-bottom: 12px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .link-btn i {
+            width: 26px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .link-btn .label {
+            flex: 1;
+        }
+
+        .link-btn .arrow {
+            color: #7a7da8;
+            font-size: 13px;
+            transition: 0.2s;
+        }
+
+        .link-btn:hover {
+            background: rgba(255, 255, 255, 0.13);
+            transform: scale(1.02);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .link-btn:hover .arrow {
+            transform: translateX(4px);
+            color: #fff;
+        }
+
+        /* Brand colors for icons */
+        .btn-whatsapp i { color: #25D366; }
+        .btn-telegram i { color: #26A5E4; }
+        .btn-telegram-group i { color: #26A5E4; }
+        .btn-facebook-page i { color: #1877F2; }
+        .btn-facebook-profile i { color: #4267B2; }
+
+        /* --- BOT SECTION --- */
+        .bot-section {
+            margin: 24px 0 8px;
+            padding: 20px 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 28px;
+            border: 1px dashed rgba(255, 255, 255, 0.08);
+        }
+
+        .bot-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+
+        .bot-header .bot-title {
+            color: #b0b3d0;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        .bot-header .badge {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 4px 12px;
+            border-radius: 40px;
+            color: #b0b3d0;
+            font-size: 11px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .input-group input {
+            flex: 1;
+            padding: 12px 18px;
+            border-radius: 40px;
+            border: none;
+            background: rgba(255, 255, 255, 0.07);
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            min-width: 140px;
+            transition: 0.2s;
+        }
+
+        .input-group input::placeholder {
+            color: #6a6d94;
+        }
+
+        .input-group input:focus {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .input-group button {
+            padding: 12px 26px;
+            border-radius: 40px;
+            border: none;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: #fff;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.25s;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .input-group button:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 28px rgba(245, 87, 108, 0.35);
+        }
+
+        .response-area {
+            margin-top: 16px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 20px;
+            min-height: 44px;
+            color: #b0b3d0;
+            font-size: 14px;
+            line-height: 1.5;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .response-area.reply {
+            border-left: 4px solid #f5576c;
+            color: #eaeaea;
+        }
+
+        .response-area .reply-sender {
+            font-weight: 600;
+            color: #f093fb;
+        }
+
+        .action-row {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 12px;
+            gap: 12px;
+        }
+
+        .action-row button {
+            padding: 8px 18px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: transparent;
+            color: #b0b3d0;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .action-row button:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            text-align: center;
+            margin-top: 28px;
+            color: #4a4d73;
+            font-size: 12px;
+            letter-spacing: 0.4px;
+        }
+
+        .footer a {
+            color: #7a7da8;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #b0b3d0;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 480px) {
+            .card { padding: 20px 16px; }
+            .input-group input { min-width: 100px; font-size: 13px; }
+            .input-group button { font-size: 13px; padding: 10px 18px; }
+            .profile h1 { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <!-- ===== PROFILE ===== -->
+    <div class="profile">
+        <div class="avatar">
+            <img src="https://ui-avatars.com/api/?name=Yeakub+Islam&background=f5576c&color=fff&size=120" alt="Yeakub Islam" />
+        </div>
+        <h1>Yeakub Islam</h1>
+        <p class="title">💻 Developer &bull; 🎨 Creator &bull; 📱 Tech Enthusiast</p>
+        <div class="divider"></div>
+    </div>
+
+    <!-- ===== SOCIAL LINKS ===== -->
+    <a href="https://wa.me/8801889439678" target="_blank" class="link-btn btn-whatsapp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="label">WhatsApp</span>
+        <span class="arrow"><i class="fas fa-chevron-right"></i></span>
+    </a>
+
+    <a href="https://t.me/YeakubIslam1544" target="_blank" class="link-btn btn-telegram">
+        <i class="fab fa-telegram-plane"></i>
+        <span class="label">Telegram (Personal)</span>
+        <span class="arrow"><i class="fas fa-chevron-right"></i></span>
+    </a>
+
+    <a href="https://t.me/+3JLmfn2iEcg2NDQ1" target="_blank" class="link-btn btn-telegram-group">
+        <i class="fas fa-users"></i>
+        <span class="label">Telegram Group</span>
+        <span class="arrow"><i class="fas fa-chevron-right"></i></span>
+    </a>
+
+    <!-- 👇 Facebook Page (প্রথম লিংক) -->
+    <a href="https://www.facebook.com/profile.php?id=61592189137792" target="_blank" class="link-btn btn-facebook-page">
+        <i class="fas fa-thumbs-up"></i>
+        <span class="label">Facebook Page</span>
+        <span class="arrow"><i class="fas fa-chevron-right"></i></span>
+    </a>
+
+    <!-- 👇 Facebook Profile (দ্বিতীয় লিংক) -->
+    <a href="https://www.facebook.com/profile.php?id=61592160008729" target="_blank" class="link-btn btn-facebook-profile">
+        <i class="fab fa-facebook-f"></i>
+        <span class="label">Facebook Profile</span>
+        <span class="arrow"><i class="fas fa-chevron-right"></i></span>
+    </a>
+
+    <!-- ===== TELEGRAM BOT ===== -->
+    <div class="bot-section">
+        <div class="bot-header">
+            <span class="bot-title"><i class="fas fa-robot" style="margin-right:8px;"></i>Telegram Bot</span>
+            <span class="badge">v1.0</span>
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="userMessage" placeholder="Type your message..." />
+            <button id="sendBtn"><i class="fas fa-paper-plane"></i> Send</button>
+        </div>
+
+        <div id="botResponse" class="response-area">💬 Your reply will appear here</div>
+
+        <div class="action-row">
+            <button id="checkReplyBtn"><i class="fas fa-sync-alt"></i> Check Reply</button>
+            <button id="clearBtn"><i class="fas fa-eraser"></i> Clear</button>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer">
+        &copy; 2026 — <a href="#">Yeakub Islam</a> &bull; Made with <span style="color:#f5576c;">❤</span>
+    </div>
+
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+    (function() {
+        // ------------------------------------------------------------------
+        // ⚠️  IMPORTANT: Replace these with your own credentials in production.
+        //     Never expose your bot token in client-side code!
+        // ------------------------------------------------------------------
+        const BOT_TOKEN = "8701743572:AAHyw1FBdW0O23nPX5peLXTsr3PccBGupgk";
+        const CHAT_ID   = "8526736623";
+
+        // DOM refs
+        const userInput = document.getElementById('userMessage');
+        const sendBtn   = document.getElementById('sendBtn');
+        const responseDiv = document.getElementById('botResponse');
+        const checkReplyBtn = document.getElementById('checkReplyBtn');
+        const clearBtn = document.getElementById('clearBtn');
+
+        let lastUpdateId = 0;
+
+        // ---------- Send message to Telegram ----------
+        function sendToBot() {
+            const msg = userInput.value.trim();
+            if (!msg) {
+                setResponse('⚠️ Please write something.', '#f7b731', false);
+                return;
+            }
+
+            setResponse('⏳ Sending...', '#b0b3d0', false);
+
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: `📩 Message from website:\n\n${msg}\n\n— Yeakub Islam's site`,
+                    parse_mode: 'HTML'
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.ok) {
+                    setResponse('✅ Message sent successfully!', '#4caf50', false);
+                    userInput.value = '';
+                    // Auto-check for reply after 2.5s
+                    setTimeout(fetchReply, 2500);
+                } else {
+                    setResponse('❌ Failed: ' + (data.description || 'Unknown error'), '#f5576c', false);
+                }
+            })
+            .catch(err => {
+                setResponse('❌ Network error: ' + err.message, '#f5576c', false);
+            });
+        }
+
+        // ---------- Fetch latest reply (polling) ----------
+        function fetchReply() {
+            setResponse('⏳ Checking for reply...', '#b0b3d0', false);
+
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/getUpdates?offset=${lastUpdateId + 1}&limit=1`;
+
+            fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                if (data.ok && data.result && data.result.length > 0) {
+                    const update = data.result[0];
+                    lastUpdateId = update.update_id;
+
+                    // Check if this is a reply to our message
+                    if (update.message && update.message.reply_to_message) {
+                        const replyText = update.message.text || '(media)';
+                        const sender = update.message.from.first_name || 'User';
+                        setResponse(
+                            `💬 <span class="reply-sender">${sender}</span> replied: "${replyText}"`,
+                            '#4caf50',
+                            true
+                        );
+                    } else {
+                        setResponse('📭 No new reply yet.', '#b0b3d0', false);
+                    }
+                } else {
+                    setResponse('📭 No new reply yet.', '#b0b3d0', false);
+                }
+            })
+            .catch(err => {
+                setResponse('❌ Failed to check reply: ' + err.message, '#f5576c', false);
+            });
+        }
+
+        // ---------- Helper to set response area ----------
+        function setResponse(html, color, isReply) {
+            responseDiv.innerHTML = html;
+            responseDiv.style.color = color || '#b0b3d0';
+            if (isReply) {
+                responseDiv.classList.add('reply');
+            } else {
+                responseDiv.classList.remove('reply');
+            }
+        }
+
+        // ---------- Clear message & response ----------
+        function clearAll() {
+            userInput.value = '';
+            setResponse('💬 Your reply will appear here', '#b0b3d0', false);
+        }
+
+        // ---------- Event Listeners ----------
+        sendBtn.addEventListener('click', sendToBot);
+
+        userInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendToBot();
+            }
+        });
+
+        checkReplyBtn.addEventListener('click', fetchReply);
+        clearBtn.addEventListener('click', clearAll);
+
+        // Auto-check for reply on page load (after 3s)
+        window.addEventListener('load', function() {
+            setTimeout(fetchReply, 3000);
+        });
+
+        // ---------- (Optional) Auto-refresh every 15s ----------
+        // setInterval(fetchReply, 15000);
+    })();
+</script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"f1cc9043d23c4a3eb87f8e6146687420","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>
